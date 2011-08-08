@@ -1,0 +1,34 @@
+ ============================================================
+ = Internet Watcher     --    Hack to fix iMacs WIFI issues =
+ ============================================================
+
+== DESCRIPTION ==
+An AppleScript to watch your Internet connection and restart Airport when the Internet connection is lost.
+
+== INSTRUCTIONS ==
+You will have to edit the script file to add your admin login and password. Look for the lines to uncomment and edit towards the end of the code.
+
+== CREATOR ==
+Pierre Sauvignon
+pierre.sauvignon@gmail.com
+http://thejuicycow.com
+
+== SOURCE ==
+This software is available on Github. 
+https://github.com/pierresauvignon/Internet-Watcher
+
+== LICENSE ==
+Copyright (C) 2011 Pierre Sauvignon
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
