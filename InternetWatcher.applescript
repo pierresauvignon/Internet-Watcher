@@ -26,27 +26,21 @@ on error
 end try
 
 tell application "GrowlHelperApp"
-	-- Make a list of all the notification types 
-	-- that this script will ever send:
+	-- list of all the notification types that this script will push
 	set the allNotificationsList to ¬
 		{"Start Notification", "Error Notification", "Fix Notification"}
 	
-	-- Make a list of the notifications 
-	-- that will be enabled by default.      
-	-- Those not enabled by default can be enabled later 
-	-- in the 'Applications' tab of the growl prefpane.
+	-- list of the notifications that will be enabled by default     
 	set the enabledNotificationsList to ¬
 		{"Start Notification", "Error Notification", "Fix Notification"}
 	
-	-- Register our script with growl.
-	-- You can optionally (as here) set a default icon 
-	-- for this script's notifications.
+	-- register the script with growl
 	register as application ¬
 		"Internet Watcher" all notifications allNotificationsList ¬
 		default notifications enabledNotificationsList ¬
 		icon of application "Script Editor"
 	
-	--       Send a Notification...
+	-- start notification
 	notify with name ¬
 		"Start Notification" title ¬
 		"Internet Watcher has started" description ¬
