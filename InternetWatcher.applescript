@@ -27,40 +27,47 @@ end try
 
 tell application "GrowlHelperApp"
 	-- list of all the notification types that this script will push
-	set the allNotificationsList to Â¬
+	set the allNotificationsList to Â
 		{"Start Notification", "Error Notification", "Fix Notification"}
 	
 	-- list of the notifications that will be enabled by default     
-	set the enabledNotificationsList to Â¬
+	set the enabledNotificationsList to Â
 		{"Start Notification", "Error Notification", "Fix Notification"}
 	
 	-- register the script with growl
-	register as application Â¬
-		"Internet Watcher" all notifications allNotificationsList Â¬
-		default notifications enabledNotificationsList Â¬
+	register as application Â
+		"Internet Watcher" all notifications allNotificationsList Â
+		default notifications enabledNotificationsList Â
 		icon of application "Script Editor"
 	
 	-- start notification
-	notify with name Â¬
-		"Start Notification" title Â¬
-		"Internet Watcher has started" description Â¬
+	notify with name Â
+		"Start Notification" title Â
+		"Internet Watcher has started" description Â
 		"The application is now running." application name "Internet Watcher"
 	
 	-- check that internet is up
-	set max_retry to 2 -- just to make sure that this is not a temporary (brief) downtime
+	set max_retry to 3 -- just to make sure that this is not a temporary (brief) downtime
 	set k to 0
 	
 	repeat
 		try
 			do shell script "ping -c 1 -t 2 www.google.com"
 		on error -- internet link seems lost
+			
+			--       Send a Notification...
+			notify with name Â
+				"Error Notification" title Â
+				"Internet Watcher Report" description Â
+				"The Internet link is returning errors." application name "Internet Watcher"
+			
 			set k to k + 1
 			if k > max_retry then -- it is unlikely to be a temporary glitch so we do our little trick with Airport
 				
 				--       Send a Notification...
-				notify with name Â¬
-					"Error Notification" title Â¬
-					"Internet Watcher Report" description Â¬
+				notify with name Â
+					"Error Notification" title Â
+					"Internet Watcher Report" description Â
 					"The Internet link seems to be broken. Internet Watcher is now restarting the Airport." application name "Internet Watcher"
 				
 				-- turning airport OFF
@@ -75,9 +82,9 @@ tell application "GrowlHelperApp"
 				do shell script "/usr/sbin/networksetup -setairportpower" & the_port & " on" with administrator privileges
 				
 				-- success message
-				notify with name Â¬
-					"Fix Notification" title Â¬
-					"Internet Watcher Report" description Â¬
+				notify with name Â
+					"Fix Notification" title Â
+					"Internet Watcher Report" description Â
 					"The Internet link should now have been fixed." application name "Internet Watcher"
 			end if
 		end try
